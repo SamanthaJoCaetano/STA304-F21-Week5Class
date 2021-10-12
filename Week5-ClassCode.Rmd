@@ -1,0 +1,94 @@
+---
+title: "Week 5 - Class Coding"
+author: "Samantha-Jo Caetano"
+date: "Oct 13, 2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+In your Assignment 1 you will need to grab some data from the Toronto Open Data Portal. 
+
+Let's work together to grab a data set and perform a small (Bayesian?) regression analysis on it.
+
+# Grabbing some Data
+
+Here is a "user-friendly" website to get to know about the data in the Toronto Open Data portal: [https://open.toronto.ca/](https://open.toronto.ca/). Let's take a look at it. Note, if you click **Data Catalogue** at the top left-ish of the page, you should be able to see all the data available.
+
+
+I am going to look at the "BodySafe" data set which looks at whether establishments offering hairstyling or barbering services were required to get a PSS licence and post their inspection notices at or near the entrance of the business. (Here is a link to this data: [https://open.toronto.ca/dataset/bodysafe/](https://open.toronto.ca/dataset/bodysafe/))
+
+Okay, let's load in the data here:
+```{r}
+#install.packages("opendatatoronto")
+library(opendatatoronto)
+library(tidyverse)
+
+# browse_portal()  # to look at the Open Toronto Data Portal
+
+```
+
+Now, if we specifically want the BodySafe data set, we can use the following process to grab it:
+
+```{r}
+
+search_packages("BodySafe")
+# This is convenient because it gives us the identifying information
+# of the BodySafe data set. Let’s pull the id from it:
+
+search_packages("BodySafe")  
+# Good, but let's save the id (I am just copying it below based off the output)
+
+
+```
+
+Alrighty, so we have saved the ID, now let's do a sanity check to make sure we are grabbing the correct data:
+
+```{r}
+
+
+```
+
+Now, we have the ID of the data so we can grab the data itself:
+
+```{r}
+
+
+
+```
+
+YAY!
+
+# Regression Analysis
+
+Let's perform a basic logistic regression analysis. If we use a Bayesian approach we need brms:
+
+```{r}
+# install.packages("brms")
+# install.packages("rstan")
+```
+
+```{r}
+library(brms)
+library(tidyverse)
+```
+
+Let's to look at the relationship between inspStatusDesc (y) and servTypeDesc (x1) and latitude (x2). Let's clean the data a bit and do some sanity checks first: 
+
+```{r}
+
+
+```
+
+
+*Please Note: This is not really an appropriate analysis, especially from a "practical" perspective. It is only being used here for demonstrative purposes!*
+
+
+```{r}
+
+
+
+```
